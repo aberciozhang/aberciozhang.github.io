@@ -2,7 +2,7 @@
 title: 框架gorm
 date: 2021-02-05 14:46:57
 tags:
-    - 数据库
+    - database
     - sql
 categories: 数据库
 top: 90

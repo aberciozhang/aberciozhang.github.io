@@ -3,7 +3,8 @@ title: hexo
 date: 2021-02-05 14:46:57
 tags:
     - hexo
-categories: 博客框架
+    - blog
+categories: 其他
 top: 90
 toc: true # 是否启用内容索引
 sidebar: true # 是否启用sidebar侧边栏，none：不启用
