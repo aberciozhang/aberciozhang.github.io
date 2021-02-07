@@ -1,10 +1,10 @@
 ---
-title: 库rpc
+title: 系统库rpc
 date: 2021-02-05 14:46:57
 tags:
     - rpc
     - grpc
-categories: 内置库
+categories: 系统库
 top: 80
 toc: true # 是否启用内容索引
 sidebar: true # 是否启用sidebar侧边栏，none：不启用
@@ -13,6 +13,7 @@ go内置rpc
 rpc的基础使用
 最简单的例子
 <!-- more -->
+
 ## 库rpc
 
 ## 例子1服务端

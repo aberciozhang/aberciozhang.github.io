@@ -1,7 +1,6 @@
 ---
 title: git
 tags:
-  - github
   - git
   - gitee
 categories: 其他
@@ -27,6 +26,14 @@ git commit -m "备份名"
 git remote add origin https://...
 git remote rm origin 
 ```
+
+密钥
+
+```
+ssh-keygen -t rsa -C "z_chunhua@126.com"
+```
+
+
 
 ### gitee上传本地文件
 

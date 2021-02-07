@@ -58,6 +58,12 @@ npm install hexo-deployer-git --save
 ### 配置_config.yml
 
 ```
+https://gitee.com/abercio/flutter.git
+```
+
+
+
+```
 # Deploymentconfig.yml
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:

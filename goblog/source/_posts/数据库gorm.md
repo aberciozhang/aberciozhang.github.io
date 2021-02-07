@@ -1,5 +1,5 @@
 ---
-title: 框架gorm
+title: 数据库gorm
 date: 2021-02-05 14:46:57
 tags:
     - database

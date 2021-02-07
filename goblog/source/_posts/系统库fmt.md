@@ -1,10 +1,10 @@
 ---
-title: go内置库fmt
+title: 系统库fmt
 date: 2021-02-05 14:46:57
 tags:
     - buildin
     - fmt
-categories: 内置库
+categories: 系统库
 top: 90
 toc: true # 是否启用内容索引
 sidebar: true # 是否启用sidebar侧边栏，none：不启用
