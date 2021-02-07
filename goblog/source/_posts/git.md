@@ -24,6 +24,8 @@ date: 2021-02-06 12:15:25
 git init
 git add .
 git commit -m "备份名"
+git remote add origin https://...
+git remote rm origin 
 ```
 
 ### gitee上传本地文件
