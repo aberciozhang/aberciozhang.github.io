@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: Flutter
 subtitle: ''
 description: ''
 keywords:
-author: John Doe
-language: en
+author: Abert
+language: zh-CN
 timezone: ''
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: http://example.com
+url: https://gitee.com/abercio/flutter
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -98,9 +98,11 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: purer
+theme: pure
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+  type: git
+  repo: git@gitee.com:abercio/flutter.git
+  branch: master

@@ -44,27 +44,3 @@ git push -u origin master
 //这种方式只能先建仓库,再拉到本地,才能上传
 ```
 
-### gitee利用ssh上传本地文件
-
-```
-//ssh的样式
-git@gitee.com:abercio/flutter.git
-//Git 全局设置
-git config --global user.name "abercio"
-git config --global user.email "z_chunhua@126.com"
-//创建 git 仓库
-mkdir flutter
-cd flutter
-git init
-touch README.md
-git add README.md
-git commit -m "first commit"
-git remote add origin git@gitee.com:abercio/flutter.git
-git push -u origin master
-//已有仓库
-cd existing_git_repo
-git remote add origin git@gitee.com:abercio/flutter.git
-git push -u origin master
-//这种方式有问题!
-```
-

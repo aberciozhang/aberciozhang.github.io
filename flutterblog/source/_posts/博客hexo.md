@@ -1,5 +1,5 @@
 ---
-title: hexo
+title: 博客hexo
 date: 2021-02-05 14:46:57
 tags:
     - hexo
@@ -9,31 +9,32 @@ top: 90
 toc: true # 是否启用内容索引
 sidebar: true # 是否启用sidebar侧边栏，none：不启用
 ---
-go语言最常用的微服务框架
-微服务模块化使用
+摘要:
+    go语言最常用的微服务框架
+    微服务模块化使用
 <!-- more -->
-## hexo博客框架
+### hexo博客框架
 
-## 安装nodejs
+### 安装nodejs
 
 ```
 http://nodejs.cn/
 ```
 
-## 本地
+### 本地
 
 ```
 npm config set registry https://registry.npm.taobao.org
 ```
 
-## 安装cnpm
+### 安装cnpm
 
 ```
 npm install cnpm -g	//两条选其中一个
 npm install hexo-cli -g 
 ```
 
-## 安装hexo
+### 安装hexo
 
 ```
 https://hexo.io/zh-cn/
@@ -41,20 +42,20 @@ cnpm install hexo -g
 
 ```
 
-## 安装博客
+### 安装博客
 
 ```
 hexo init myblog  //在当前目录下生成myblog子目录
 npm install
 ```
 
-## 目录安装git上传插件
+### 目录安装git上传插件
 
 ```
 npm install hexo-deployer-git --save
 ```
 
-## 配置_config.yml
+### 配置_config.yml
 
 ```
 # Deploymentconfig.yml
@@ -65,7 +66,7 @@ deploy:
   branch: master
 ```
 
-## 更换主题
+### 更换主题
 
 ```
 进入themes目录或者git后面加themes/主题名目录
@@ -74,7 +75,7 @@ git clone https://github.com/HmyBmny/hexo-theme-concise.git themes/concise
 theme: hexo-theme-xups
 ```
 
-## 主题next安装
+### 主题next安装
 
 ```
 cd hexo-site
@@ -84,7 +85,7 @@ cd hexo-site
 git clone https://github.com/next-theme/hexo-theme-next themes/next
 ```
 
-## 主题next更换模板
+### 主题next更换模板
 
 ```
 # Schemes
@@ -94,7 +95,7 @@ scheme: Muse
 #scheme: Gemini
 ```
 
-## 主题next右上角实现fork
+### 主题next右上角实现fork
 
 ```
 //themes/next/layout/_layout.swig
@@ -114,7 +115,7 @@ scheme: Muse
 <a href="https://your-url" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#FD6C6C; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 ```
 
-## 主题next添加RSS
+### 主题next添加RSS
 
 ```
 //在博客框架的根目录上安装插件
@@ -135,7 +136,7 @@ rss: /atom.xml
 
 ```
 
-## 主题next设置背景
+### 主题next设置背景
 
 ```
 //再next的配置文件中,false改为true有背景
@@ -146,7 +147,7 @@ canvas_ribbon:
   zIndex: -1 # The display level of the ribbon
 ```
 
-## 主题next加载进度条
+### 主题next加载进度条
 
 ```
 //再next的配置文件中,false改为true有背景
@@ -158,7 +159,7 @@ nprogress:
   
 ```
 
-## 主题next动态背景
+### 主题next动态背景
 
 ```
 //如果next主题在5.1.1以上的话就不用我这样设置，直接在主题配置文件中找到canvas_nest: false，把它改为canvas_nest: true就行
@@ -190,7 +191,7 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
 //zIndex: 背景的z-index属性，css属性用于控制所在层的位置, 默认: -1
 ```
 
-## 主题next桃心效果
+### 主题next桃心效果
 
 ```
 //http://7u2ss1.com1.z0.glb.clouddn.com/love.js
@@ -199,7 +200,7 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
 
 
 
-## 主题next修改内链接样式
+### 主题next修改内链接样式
 
 ```
 //themes\next\source\css\_common\components\post\post.styl，
@@ -217,7 +218,7 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
 }
 ```
 
-## 主题next改文章底部带#标签
+### 主题next改文章底部带#标签
 
 ```
 //修改模板/themes/next/layout/_macro/post.swig，
@@ -227,7 +228,7 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
 
 
 
-## 主题next文章尾添结束
+### 主题next文章尾添结束
 
 ```
 //在路径 \themes\next\layout\_macro 中
@@ -240,7 +241,7 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
 
 ```
 
-## 主题next加访问量
+### 主题next加访问量
 
 ```
 //打开\themes\next\layout\_partials\footer.swig文件,
@@ -271,7 +272,7 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
 
 
 
-## 主题next网站字数统计
+### 主题next网站字数统计
 
 ```
 //根目录下，然后运行如下代码
@@ -285,7 +286,7 @@ npm install hexo-wordcount --save
 
 
 
-## 主题next设置网站图标
+### 主题next设置网站图标
 
 ```
 //找一张（32*32）的ico图标
@@ -296,7 +297,7 @@ npm install hexo-wordcount --save
 favicon: /favicon.ico
 ```
 
-## 主题next统计功能
+### 主题next统计功能
 
 ```
 //在根目录下安装 hexo-wordcount
@@ -310,7 +311,7 @@ post_wordcount:
   min2read: true
 ```
 
-## 主题next统计置顶功能
+### 主题next统计置顶功能
 
 ```
 //修改 hero-generator-index 插件的文件
@@ -358,7 +359,7 @@ top: 100
 
 ```
 
-## 主题next修改字体
+### 主题next修改字体
 
 ```
 //打开\themes\next\source\css\ _variables\base.styl文件，
