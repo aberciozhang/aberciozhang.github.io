@@ -23,8 +23,11 @@ date: 2021-02-06 12:15:25
 git init
 git add .
 git commit -m "备份名"
-git remote add origin https://...
-git remote rm origin 
+git remote add <name> https://...
+git remote rm <name> 
+git remote rename <old> <new>
+git remote remove <name>
+git push -f flutter master
 ```
 
 密钥
@@ -75,5 +78,29 @@ cd existing_git_repo
 git remote add origin git@gitee.com:abercio/flutter.git
 git push -u origin master
 //这种方式有问题!
+```
+
+flutter上传到gitee
+
+```
+//准备工作
+git init//第一次
+git add .
+git commit -m "备份名"
+//第一次,后面不需要了
+git remote add flutter https://gitee.com/abercio/flutter.git
+git push -f flutter master
+```
+
+blogcode上传到gitee
+
+```
+//准备工作
+git init//第一次
+git add .
+git commit -m "备份名"
+//第一次,后面不需要了
+git remote add blogcode https://gitee.com/abercio/blogcode.git
+git push -f blogcode master
 ```
 
