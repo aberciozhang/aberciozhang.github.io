@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>库sliding_panel | flutter笔记</title>
+  <meta name="description" content="摘要:    Flutter快速开发App">
+<meta property="og:type" content="article">
+<meta property="og:title" content="库sliding_panel">
+<meta property="og:url" content="https://abercio.gitee.io/flutter/2021/02/09/%E5%BA%93sliding-panel/index.html">
+<meta property="og:site_name" content="Flutter笔记">
+<meta property="og:description" content="摘要:    Flutter快速开发App">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-02-09T02:14:53.000Z">
+<meta property="article:modified_time" content="2021-02-09T02:17:46.472Z">
+<meta property="article:author" content="Abercio">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://abercio.gitee.io/flutter/2021/02/09/%E5%BA%93sliding-panel/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Flutter笔记" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body class="main-center theme-green" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://abercio.gitee.io/flutter" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">abercio</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">flutter &amp; Go!</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Nanjing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/abercio" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享flutter经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%93/">库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%89%AB%E6%8F%8F/">扫描</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%96%87%E4%BB%B6/">文件</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9E%9A%E4%B8%BE%E7%B1%BB/">枚举类</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%B1%BB/">类</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%B1%BB%E5%88%97%E8%A1%A8/">类列表</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%B1%BB%E6%8C%89%E9%92%AE/">类按钮</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%B1%BB%E8%84%9A%E6%89%8B%E6%9E%B6/">类脚手架</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%AD%E8%A8%80/">语言</a><span class="category-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/AS/" style="font-size: 13px;">AS</a> <a href="/tags/AppBar/" style="font-size: 13.33px;">AppBar</a> <a href="/tags/Axis/" style="font-size: 13px;">Axis</a> <a href="/tags/Button/" style="font-size: 13px;">Button</a> <a href="/tags/CustomScrollView/" style="font-size: 13px;">CustomScrollView</a> <a href="/tags/GridView/" style="font-size: 13px;">GridView</a> <a href="/tags/List/" style="font-size: 13px;">List</a> <a href="/tags/NestedScrollView/" style="font-size: 13px;">NestedScrollView</a> <a href="/tags/Scaffold/" style="font-size: 13.67px;">Scaffold</a> <a href="/tags/SharedPreferences/" style="font-size: 13px;">SharedPreferences</a> <a href="/tags/Sliver/" style="font-size: 13.33px;">Sliver</a> <a href="/tags/Tesseract/" style="font-size: 13px;">Tesseract</a> <a href="/tags/class/" style="font-size: 13.33px;">class</a> <a href="/tags/dart/" style="font-size: 14px;">dart</a> <a href="/tags/file/" style="font-size: 13px;">file</a> <a href="/tags/flutter-swiper/" style="font-size: 13px;">flutter_swiper</a> <a href="/tags/forEach/" style="font-size: 13px;">forEach</a> <a href="/tags/isolate/" style="font-size: 13px;">isolate</a> <a href="/tags/list/" style="font-size: 13px;">list</a> <a href="/tags/ocr/" style="font-size: 13px;">ocr</a> <a href="/tags/stream/" style="font-size: 13px;">stream</a> <a href="/tags/where/" style="font-size: 13px;">where</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 13px;">快捷键</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/" style="font-size: 13px;">数据存储</a> <a href="/tags/%E7%BB%93%E6%9E%84/" style="font-size: 13px;">结构</a> <a href="/tags/%E8%BD%AE%E6%92%AD/" style="font-size: 13px;">轮播</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">25</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E7%B1%BB%E6%8C%89%E9%92%AE/">类按钮</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/02/09/%E7%B1%BBFlatButton/" class="title">类FlatButton</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-02-09T02:32:58.000Z" itemprop="datePublished">2021-02-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E6%9E%9A%E4%B8%BE%E7%B1%BB/">枚举类</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/02/09/%E6%9E%9A%E4%B8%BE%E7%B1%BBAxis/" class="title">枚举类Axis</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-02-09T02:31:06.000Z" itemprop="datePublished">2021-02-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E7%B1%BB%E8%84%9A%E6%89%8B%E6%9E%B6/">类脚手架</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/02/09/%E7%B1%BBSliverList/" class="title">类SliverList</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-02-09T02:28:30.000Z" itemprop="datePublished">2021-02-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/02/09/%E7%B1%BBSliverPadding/" class="title">类SliverPadding</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-02-09T02:27:15.000Z" itemprop="datePublished">2021-02-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E7%B1%BB%E8%84%9A%E6%89%8B%E6%9E%B6/">类脚手架</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/02/09/%E7%B1%BBSliverAppBar/" class="title">类SliverAppBar</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-02-09T02:25:13.000Z" itemprop="datePublished">2021-02-09</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E5%AF%BC%E5%8C%85"><span class="toc-number">1.</span> <span class="toc-text">依赖导包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BBSlidingPanel%E6%9E%84%E9%80%A0"><span class="toc-number">2.</span> <span class="toc-text">类SlidingPanel构造</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BBPanelContent"><span class="toc-number">3.</span> <span class="toc-text">类PanelContent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BBPanelSize"><span class="toc-number">4.</span> <span class="toc-text">类PanelSize</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BBPanelFooterWidget"><span class="toc-number">5.</span> <span class="toc-text">类PanelFooterWidget</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BBPanelHeaderWidget"><span class="toc-number">6.</span> <span class="toc-text">类PanelHeaderWidget</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BBPanelController"><span class="toc-number">7.</span> <span class="toc-text">类PanelController</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BBPanelCollapsedWidget"><span class="toc-number">8.</span> <span class="toc-text">类PanelCollapsedWidget</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BBPanelDecoration"><span class="toc-number">9.</span> <span class="toc-text">类PanelDecoration</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BBSlidingPanelAppBar"><span class="toc-number">10.</span> <span class="toc-text">类SlidingPanelAppBar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BBSlidingPanelSliverAppBar"><span class="toc-number">11.</span> <span class="toc-text">类SlidingPanelSliverAppBar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BBBackdropConfig"><span class="toc-number">12.</span> <span class="toc-text">类BackdropConfig</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BBPanelAutoSizing"><span class="toc-number">13.</span> <span class="toc-text">类PanelAutoSizing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BBPanelClosedOptions"><span class="toc-number">14.</span> <span class="toc-text">类PanelClosedOptions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BBPanelHeaderOptions"><span class="toc-number">15.</span> <span class="toc-text">类PanelHeaderOptions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BBPanelMaxWidth"><span class="toc-number">16.</span> <span class="toc-text">类PanelMaxWidth</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0showModalSlidingPanel"><span class="toc-number">17.</span> <span class="toc-text">函数showModalSlidingPanel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%9A%E4%B8%BE%E7%B1%BBBackPressBehavior"><span class="toc-number">18.</span> <span class="toc-text">枚举类BackPressBehavior</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%9A%E4%B8%BE%E7%B1%BBInitialPanelState"><span class="toc-number">19.</span> <span class="toc-text">枚举类InitialPanelState</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%9A%E4%B8%BE%E7%B1%BBPanelDraggingDirection"><span class="toc-number">20.</span> <span class="toc-text">枚举类PanelDraggingDirection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%9A%E4%B8%BE%E7%B1%BBPanelPoppingBehavior"><span class="toc-number">21.</span> <span class="toc-text">枚举类PanelPoppingBehavior</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%9A%E4%B8%BE%E7%B1%BBPanelSnapping"><span class="toc-number">22.</span> <span class="toc-text">枚举类PanelSnapping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%9A%E4%B8%BE%E7%B1%BBPanelState"><span class="toc-number">23.</span> <span class="toc-text">枚举类PanelState</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B"><span class="toc-number">24.</span> <span class="toc-text">简单示例</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-库sliding-panel" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      库sliding_panel
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2021/02/09/%E5%BA%93sliding-panel/" class="article-date">
+	  <time datetime="2021-02-09T02:14:53.000Z" itemprop="datePublished">2021-02-09</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
+  </span>
+
+        
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/02/09/%E5%BA%93sliding-panel/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>摘要:<br>    Flutter快速开发App</p>
+<a id="more"></a>
+
+<h3 id="依赖导包"><a href="#依赖导包" class="headerlink" title="依赖导包"></a>依赖导包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sliding_panel: ^1.0.1</span><br><span class="line">import &#39;package:sliding_panel&#x2F;sliding_panel.dart&#39;;</span><br></pre></td></tr></table></figure>
+<p>应用场景</p>
+<h3 id="类SlidingPanel构造"><a href="#类SlidingPanel构造" class="headerlink" title="类SlidingPanel构造"></a>类SlidingPanel构造</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">SlidingPanel(&#123;</span><br><span class="line">Key key, </span><br><span class="line">InitialPanelState initialState: InitialPanelState.closed, </span><br><span class="line">bool animatedAppearing: false, </span><br><span class="line">@required PanelContent content, &#x2F;&#x2F;头部,内容,脚部及相关设置</span><br><span class="line">PanelSize size: const PanelSize(), &#x2F;&#x2F;关闭,扩展的高度</span><br><span class="line">PanelMaxWidth maxWidth: const PanelMaxWidth(), </span><br><span class="line">PanelDecoration decoration:const PanelDecoration(), &#x2F;&#x2F;panel的样式设置</span><br><span class="line">BackdropConfig backdropConfig: const BackdropConfig(), &#x2F;&#x2F;背景的操作和虚化</span><br><span class="line">PanelController panelController,     &#x2F;&#x2F;控制器</span><br><span class="line">PanelAutoSizing autoSizing: const PanelAutoSizing(), </span><br><span class="line">bool renderPanelBackground: true, </span><br><span class="line">PanelSnapping snapping: PanelSnapping.disabled, </span><br><span class="line">double snappingTriggerPercentage: 0.0, </span><br><span class="line">bool isDraggable: true, </span><br><span class="line">double parallaxSlideAmount: 0.2, &#x2F;&#x2F;将背景往上推的高度</span><br><span class="line">double dragMultiplier: 1.0, </span><br><span class="line">Duration duration: const Duration(milliseconds: 1000), &#x2F;&#x2F;panel打开时间</span><br><span class="line">Curve curve: Curves.fastOutSlowIn, </span><br><span class="line">bool isTwoStatePanel: false, &#x2F;&#x2F;分两段关闭,true为一次关闭指expand和collapse</span><br><span class="line">BackPressBehavior backPressBehavior: BackPressBehavior.POP, </span><br><span class="line">PanelPoppingBehavior panelPoppingBehavior: </span><br><span class="line">    PanelPoppingBehavior.POP_AFTER_TAP, </span><br><span class="line">Map&lt;PanelDraggingDirection,double&gt; allowedDraggingTill: </span><br><span class="line">    const &#123;PanelDraggingDirection.ALLOW : 0.0&#125;, </span><br><span class="line">PanelClosedOptions panelClosedOptions: const PanelClosedOptions(), </span><br><span class="line">void onPanelSlide(double position), </span><br><span class="line">void onPanelStateChanged(PanelState state), </span><br><span class="line">void onThrowResult(dynamic result)&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="类PanelContent"><a href="#类PanelContent" class="headerlink" title="类PanelContent"></a>类PanelContent</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">PanelContent(&#123;</span><br><span class="line">PanelHeaderWidget headerWidget: const PanelHeaderWidget(), </span><br><span class="line">PanelFooterWidget footerWidget: const PanelFooterWidget(), </span><br><span class="line">@required List&lt;Widget&gt; panelContent, </span><br><span class="line">Widget bodyContent,   &#x2F;&#x2F;panel的背景,正常的body</span><br><span class="line">PanelCollapsedWidget collapsedWidget: const PanelCollapsedWidget()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="类PanelSize"><a href="#类PanelSize" class="headerlink" title="类PanelSize"></a>类PanelSize</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PanelSize(&#123;</span><br><span class="line">    double closedHeight: 0.25, 关闭后的高度</span><br><span class="line">    double collapsedHeight: 0.40, &#x2F;&#x2F;点击一次后高度</span><br><span class="line">    double expandedHeight: 0.85   &#x2F;&#x2F;主体内容的高度</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="类PanelFooterWidget"><a href="#类PanelFooterWidget" class="headerlink" title="类PanelFooterWidget"></a>类PanelFooterWidget</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PanelFooterWidget(&#123;</span><br><span class="line">Widget footerContent, </span><br><span class="line">PanelDecoration decoration: const PanelDecoration()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="类PanelHeaderWidget"><a href="#类PanelHeaderWidget" class="headerlink" title="类PanelHeaderWidget"></a>类PanelHeaderWidget</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">PanelHeaderWidget(&#123;</span><br><span class="line">    Widget headerContent, </span><br><span class="line">    PanelDecoration decoration: const PanelDecoration(), </span><br><span class="line">    PanelHeaderOptions options:    &#x2F;&#x2F;详细参数</span><br><span class="line">        const PanelHeaderOptions(), &#x2F;&#x2F;颜色,leading,边距等</span><br><span class="line">    VoidCallback onTap</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="类PanelController"><a href="#类PanelController" class="headerlink" title="类PanelController"></a>类PanelController</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PanelController()</span><br></pre></td></tr></table></figure>
+<h3 id="类PanelCollapsedWidget"><a href="#类PanelCollapsedWidget" class="headerlink" title="类PanelCollapsedWidget"></a>类PanelCollapsedWidget</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PanelCollapsedWidget(&#123;</span><br><span class="line">Widget collapsedContent, </span><br><span class="line">bool hideInExpandedOnly: true</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="类PanelDecoration"><a href="#类PanelDecoration" class="headerlink" title="类PanelDecoration"></a>类PanelDecoration</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">PanelDecoration(&#123;</span><br><span class="line">Border border, </span><br><span class="line">BorderRadiusGeometry borderRadius, </span><br><span class="line">List&lt;BoxShadow&gt; boxShadows: </span><br><span class="line">    const [BoxShadow(blurRadius: 8.0, </span><br><span class="line">        color: Color.fromRGBO(0, 0, 0, 0.25))], </span><br><span class="line">    Color backgroundColor, </span><br><span class="line">    EdgeInsets padding, &#x2F;&#x2F;panel内边距</span><br><span class="line">    EdgeInsets margin  &#x2F;&#x2F;panel外边距</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="类SlidingPanelAppBar"><a href="#类SlidingPanelAppBar" class="headerlink" title="类SlidingPanelAppBar"></a>类SlidingPanelAppBar</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">SlidingPanelAppBar(&#123;</span><br><span class="line">Key key, </span><br><span class="line">Widget leading, </span><br><span class="line">bool automaticallyImplyLeading: true, </span><br><span class="line">Widget title, </span><br><span class="line">List&lt;Widget&gt; actions, </span><br><span class="line">Widget flexibleSpace, </span><br><span class="line">PreferredSizeWidget bottom, </span><br><span class="line">double elevation, </span><br><span class="line">ShapeBorder shape, </span><br><span class="line">Color backgroundColor, </span><br><span class="line">Brightness brightness, </span><br><span class="line">IconThemeData iconTheme, </span><br><span class="line">IconThemeData actionsIconTheme, </span><br><span class="line">TextTheme textTheme, </span><br><span class="line">bool primary: true, </span><br><span class="line">bool centerTitle, </span><br><span class="line">double titleSpacing: NavigationToolbar.kMiddleSpacing, </span><br><span class="line">double titleHeight: kToolbarHeight, </span><br><span class="line">double toolbarOpacity: 1.0, </span><br><span class="line">double bottomOpacity: 1.0&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="类SlidingPanelSliverAppBar"><a href="#类SlidingPanelSliverAppBar" class="headerlink" title="类SlidingPanelSliverAppBar"></a>类SlidingPanelSliverAppBar</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">SlidingPanelSliverAppBar(&#123;</span><br><span class="line">Key key, </span><br><span class="line">Widget leading, </span><br><span class="line">bool automaticallyImplyLeading: true, </span><br><span class="line">Widget title, List&lt;Widget&gt; actions, </span><br><span class="line">Widget flexibleSpace, </span><br><span class="line">PreferredSizeWidget bottom, </span><br><span class="line">double elevation, </span><br><span class="line">bool forceElevated: false, </span><br><span class="line">Color backgroundColor, </span><br><span class="line">Brightness brightness, </span><br><span class="line">IconThemeData iconTheme, </span><br><span class="line">IconThemeData actionsIconTheme, </span><br><span class="line">TextTheme textTheme, </span><br><span class="line">bool primary: true, </span><br><span class="line">bool centerTitle, </span><br><span class="line">double titleSpacing: NavigationToolbar.kMiddleSpacing, double titleHeight: kToolbarHeight, </span><br><span class="line">double expandedHeight, </span><br><span class="line">bool floating: false, </span><br><span class="line">bool pinned: false, bool snap: false, </span><br><span class="line">bool stretch: false, </span><br><span class="line">double stretchTriggerOffset: 100.0, </span><br><span class="line">AsyncCallback onStretchTrigger, </span><br><span class="line">ShapeBorder shape</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="类BackdropConfig"><a href="#类BackdropConfig" class="headerlink" title="类BackdropConfig"></a>类BackdropConfig</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">BackdropConfig(&#123;</span><br><span class="line">bool enabled: false, &#x2F;&#x2F;是否虚化背景</span><br><span class="line">bool dragFromBody: true, </span><br><span class="line">Color shadowColor: Colors.black, </span><br><span class="line">double opacity: 0.5, &#x2F;&#x2F;背景透明程度</span><br><span class="line">bool collapseOnTap: true, &#x2F;&#x2F;panel通过下拉关闭,默认可以</span><br><span class="line">bool closeOnTap: true,   &#x2F;&#x2F;可以点击panel以外区域来关闭panel</span><br><span class="line">bool effectInCollapsedMode: true, </span><br><span class="line">bool draggableInClosed: false &#x2F;&#x2F;   只有上拉才能开panel</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="类PanelAutoSizing"><a href="#类PanelAutoSizing" class="headerlink" title="类PanelAutoSizing"></a>类PanelAutoSizing</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PanelAutoSizing(&#123;bool headerSizeIsClosed: false, bool autoSizeCollapsed: false, bool autoSizeExpanded: false, bool useMinExpanded: false&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="类PanelClosedOptions"><a href="#类PanelClosedOptions" class="headerlink" title="类PanelClosedOptions"></a>类PanelClosedOptions</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PanelClosedOptions(&#123;bool detachDragging: false, bool resetScrolling: false, Object sendResult, Object throwResult&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="类PanelHeaderOptions"><a href="#类PanelHeaderOptions" class="headerlink" title="类PanelHeaderOptions"></a>类PanelHeaderOptions</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">PanelHeaderOptions(&#123;</span><br><span class="line">bool primary: true, </span><br><span class="line">bool centerTitle: false, </span><br><span class="line">double elevation: 8.0, </span><br><span class="line">bool forceElevated: false, </span><br><span class="line">bool alwaysOnTop: true, </span><br><span class="line">bool floating: false, </span><br><span class="line">Widget leading, </span><br><span class="line">List&lt;Widget&gt; trailing, </span><br><span class="line">MainAxisAlignment iconsAlignment: MainAxisAlignment.center</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="类PanelMaxWidth"><a href="#类PanelMaxWidth" class="headerlink" title="类PanelMaxWidth"></a>类PanelMaxWidth</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PanelMaxWidth(&#123;</span><br><span class="line">double portrait: double.infinity, </span><br><span class="line">double landscape: double.infinity</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="函数showModalSlidingPanel"><a href="#函数showModalSlidingPanel" class="headerlink" title="函数showModalSlidingPanel"></a>函数showModalSlidingPanel</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">showModalSlidingPanel&lt;T&gt;(&#123;</span><br><span class="line">BuildContext context, </span><br><span class="line">SlidingPanel panel(BuildContext)</span><br><span class="line">&#125;) → Future&lt;T&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="枚举类BackPressBehavior"><a href="#枚举类BackPressBehavior" class="headerlink" title="枚举类BackPressBehavior"></a>枚举类BackPressBehavior</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CLOSE_PERSIST → const BackPressBehavior</span><br><span class="line">CLOSE_POP → const BackPressBehavior</span><br><span class="line">COLLAPSE_CLOSE_PERSIST → const BackPressBehavior</span><br><span class="line">COLLAPSE_CLOSE_POP → const BackPressBehavior</span><br><span class="line">COLLAPSE_PERSIST → const BackPressBehavior</span><br><span class="line">COLLAPSE_POP → const BackPressBehavior</span><br><span class="line">PERSIST → const BackPressBehavior</span><br><span class="line">POP → const BackPressBehavior</span><br><span class="line">values → const List&lt;BackPressBehavior&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="枚举类InitialPanelState"><a href="#枚举类InitialPanelState" class="headerlink" title="枚举类InitialPanelState"></a>枚举类InitialPanelState</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">closed 	const InitialPanelState(1)</span><br><span class="line">collapsed 	const InitialPanelState(2)</span><br><span class="line">dismissed 	const InitialPanelState(0)</span><br><span class="line">expanded 	const InitialPanelState(3)</span><br><span class="line">values 	const List&lt;InitialPanelState&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="枚举类PanelDraggingDirection"><a href="#枚举类PanelDraggingDirection" class="headerlink" title="枚举类PanelDraggingDirection"></a>枚举类PanelDraggingDirection</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ALLOW	const PanelDraggingDirection(0)</span><br><span class="line">DOWN	const PanelDraggingDirection(2)</span><br><span class="line">UP 	const PanelDraggingDirection(1)</span><br><span class="line">values 	const List&lt;PanelDraggingDirection&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="枚举类PanelPoppingBehavior"><a href="#枚举类PanelPoppingBehavior" class="headerlink" title="枚举类PanelPoppingBehavior"></a>枚举类PanelPoppingBehavior</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">POP_AFTER_TAP 	const PanelPoppingBehavior(0)</span><br><span class="line">POP_IMMEDIATELY 	const PanelPoppingBehavior(1)</span><br><span class="line">values	const List&lt;PanelPoppingBehavior&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="枚举类PanelSnapping"><a href="#枚举类PanelSnapping" class="headerlink" title="枚举类PanelSnapping"></a>枚举类PanelSnapping</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">disabled </span><br><span class="line">enabled </span><br><span class="line">forced </span><br><span class="line">values </span><br></pre></td></tr></table></figure>
+<h3 id="枚举类PanelState"><a href="#枚举类PanelState" class="headerlink" title="枚举类PanelState"></a>枚举类PanelState</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">animating const PanelState(4)</span><br><span class="line">closed const PanelState(1)</span><br><span class="line">collapsed const PanelState(2)</span><br><span class="line">dismissed	const PanelState(0)</span><br><span class="line">expanded const PanelState(3)</span><br><span class="line">indefinite const PanelState(5)</span><br><span class="line">values 	const List&lt;PanelState&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="简单示例"><a href="#简单示例" class="headerlink" title="简单示例"></a>简单示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">import &#39;package:flutter&#x2F;material.dart&#39;;</span><br><span class="line">import &#39;package:sliding_panel&#x2F;sliding_panel.dart&#39;;</span><br><span class="line"></span><br><span class="line">class DemoSlidingPanel extends StatelessWidget &#123;</span><br><span class="line">  final PanelController panelController &#x3D; PanelController();</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return Scaffold(</span><br><span class="line">      appBar: AppBar(</span><br><span class="line">        title: Text(&quot;SlidingPanel&quot;),</span><br><span class="line">      ),</span><br><span class="line">      body: SlidingPanel(</span><br><span class="line">        decoration: PanelDecoration(</span><br><span class="line">          margin: EdgeInsets.all(10),</span><br><span class="line">          borderRadius: BorderRadius.all(Radius.circular(10)),</span><br><span class="line">        ),</span><br><span class="line">        initialState: InitialPanelState.closed,</span><br><span class="line">        isTwoStatePanel: true,</span><br><span class="line">        backdropConfig: BackdropConfig(</span><br><span class="line">          enabled: true,</span><br><span class="line">          opacity: 0.5,</span><br><span class="line">        ),</span><br><span class="line">        parallaxSlideAmount: 0.01,</span><br><span class="line">        size: PanelSize(</span><br><span class="line">            closedHeight: 0, expandedHeight: 0.57, collapsedHeight: 0.4),</span><br><span class="line">        panelController: panelController,</span><br><span class="line">        content: PanelContent(</span><br><span class="line">          headerWidget: PanelHeaderWidget(</span><br><span class="line">            decoration: PanelDecoration(</span><br><span class="line">              margin: EdgeInsets.fromLTRB(0, 0, 0, 10),</span><br><span class="line">              borderRadius: BorderRadius.all(Radius.circular(4)),</span><br><span class="line">            ),</span><br><span class="line">            headerContent: Container(child: Text(&quot;headerContent&quot;)),</span><br><span class="line">            options: PanelHeaderOptions(</span><br><span class="line">              elevation: 8,</span><br><span class="line">              centerTitle: true,</span><br><span class="line">            ),</span><br><span class="line">          ),</span><br><span class="line">&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;panel的主体内容</span><br><span class="line">          panelContent: [</span><br><span class="line">            Text(&quot;panelContent&quot;),</span><br><span class="line">          ],</span><br><span class="line">&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;以下时原来的body内容</span><br><span class="line">          bodyContent: Column(</span><br><span class="line">            children: &lt;Widget&gt;[</span><br><span class="line">              RaisedButton(child: Text(&quot;展开&quot;),onPressed: ()&#123;</span><br><span class="line">                panelController.expand();</span><br><span class="line">              &#125;,)</span><br><span class="line">            ],</span><br><span class="line">          ),</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://abercio.gitee.io/flutter/2021/02/09/%E5%BA%93sliding-panel/" title="库sliding_panel" target="_blank" rel="external">https://abercio.gitee.io/flutter/2021/02/09/%E5%BA%93sliding-panel/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://abercio.gitee.io/flutter" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://abercio.gitee.io/flutter" target="_blank"><span class="text-dark">abercio</span><small class="ml-1x">flutter &amp; Go!</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2021/02/09/%E7%B1%BBScaffold/" title="类Scaffold"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2021/02/09/%E5%BA%93flutter-swiper/" title="库flutter_swiper"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+        <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/abercio" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2021 Abercio
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+    <script>
+(function ($) {
+    $('.search-form').on('submit', function (e) {
+        var keyword = $('.search-form-input[name="wd"]').val();
+        window.location = 'https://www.baidu.com/s?wd=site:abercio.gitee.io/flutter ' + keyword;
+        return false;
+    });
+})(jQuery);
+</script>
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+
+</body>
+</html>
