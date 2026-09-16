@@ -1,0 +1,73 @@
+# app-ads.txt —— tool_box (uk.aknot.toolbox) 授权广告流量声明文件
+#
+# 作用：向广告主声明「本应用的广告库存由哪些发布商账号授权销售」。
+# 2025 年 1 月起 Google 要求所有新应用实施，未实施会被**限流（广告投放被节流）**。
+#
+# ── 托管要求（三条缺一不可）──────────────────────────────────────────────
+#   1. 放在**可公开 HTTPS 访问**的域名根目录下
+#   2. 该域名必须与「应用商店商品详情里填写的开发者网站域名」一致
+#      - Google Play：Play Console → 商店发布 → 商品详情 → 应用网站 / 开发者网站
+#      - App Store：App Store Connect → App 信息 → 营销网址 / 隐私政策网址
+#   3. 返回 200 + Content-Type: text/plain，不能有重定向链
+#      （http → https 的一次跳转可以，多跳或跳到别的域名不行）
+#
+# ── 本项目托管位置（2026-09-17 定稿）──────────────────────────────────────
+#   目标地址：https://aberciozhang.github.io/app-ads.txt
+#   托管方式：GitHub Pages「**用户站点**」（仓库名必须叫 aberciozhang.github.io）
+#
+#   ✅ 为什么是这个地址：规范只认 **hostname 根**，
+#      aberciozhang.github.io 本身就是 hostname，/app-ads.txt 正好在根目录，
+#      因此完全合规。（对比：/tool-box/ 是项目站点的子路径，不合规。）
+#
+#   部署步骤：
+#     1) GitHub 上要有名为 **aberciozhang.github.io** 的仓库
+#        （若已存在——通常就是你的个人主页，直接往里加文件即可；不存在则新建，
+#          注意仓库名必须完整等于 aberciozhang.github.io，一个字符都不能差）
+#     2) 把本文件（只保留最后那一行有效内容即可，# 注释可删）放到该仓库**根目录**
+#     3) Settings → Pages → Source 选择分支（一般 main）与根目录 / ，保存
+#     4) 等几十秒到几分钟生效后验证：
+#          curl -i https://aberciozhang.github.io/app-ads.txt
+#        或浏览器直接打开该地址，应看到纯文本内容（Content-Type: text/plain）
+#
+#   ⚠️ 商店里怎么填（容易填错）：
+#     · Google Play「开发者网站」/ App Store「营销网址」栏只填：
+#         https://aberciozhang.github.io
+#     · **不要**填成 https://aberciozhang.github.io/app-ads.txt
+#       —— 系统会自动去拼 /app-ads.txt，你填了完整路径反而抓不到。
+#     · 隐私政策网址不受根目录限制，可以继续用
+#         https://aberciozhang.github.io/tool-box/privacy?type=1 （子路径没关系）
+#
+#   ⚠️ 另注：aknot.uk（Cloudflare）目前 root 与 www 均无 A 记录、无法解析，
+#      所以没有选它；若日后补好解析，也可以改用自有域名并在其根目录放本文件。
+#
+# ── ⚠️ 托管位置常见错误（比文件内容更容易出错）──────────────────────────
+#   · **必须在根目录，不能放子目录**。放在子目录会导致验证失败、广告收益受损。
+#     错误：https://xxx.com/privacy/app-ads.txt   ← 抓取不到
+#     正确：https://xxx.com/app-ads.txt
+#   · **商店里填的是域名，不要带文件路径**。
+#     Google Play「开发者网站」/ App Store「营销网址」栏只填域名本身，
+#     系统会自动去拼 /app-ads.txt；填成完整文件地址反而抓不到。
+#   · GitHub Pages 的正确姿势：
+#     - 用「用户站点」仓库，即仓库名必须是 **aberciozhang.github.io**（不是 tool-box）
+#       → 文件放该仓库根目录，访问 https://aberciozhang.github.io/app-ads.txt
+#     - 名为 tool-box 的仓库属于「项目站点」，地址是
+#       https://aberciozhang.github.io/tool-box/ ，其中 /tool-box/ 是**子路径**，
+#       放在这里的 app-ads.txt 存在 Google 抓不到的风险（规范只认 hostname 根）。
+#     - 折中做法（推荐）：**两个仓库各放一份**——aberciozhang.github.io 根一份，
+#       tool-box 根也放一份，无论 Google 按哪种口径抓都能命中，成本几乎为零。
+#       若一定要用它，需给 GitHub Pages 绑定一个自定义域名（如 ads.51knot.com），
+#       再放到该域名的根目录。
+#   · 因此本项目更省事的方案：直接放到 **51knot.com 的 OSS 根目录**（见上一节），
+#     商店开发者网站填 51knot.com，一次到位。
+#
+# ── 核心内容（下面这一行）────────────────────────────────────────────────
+#   字段含义：
+#     google.com            广告系统域名
+#     pub-4627610691741188  发布商 ID（= App ID ca-app-pub-4627610691741188 去掉 ca-app- 前缀）
+#     DIRECT                本账号直接销售（非转售）
+#     f08c47fec0942fa0      Google 的认证 ID（公开固定值，各家都一样）
+#
+#   ⚠️ 建议以 AdMob 控制台「应用 → app-ads.txt」页显示的内容为准，
+#      那里给出的是与你账号绑定的权威版本；本文件作为模板与离线备份。
+
+google.com, pub-4627610691741188, DIRECT, f08c47fec0942fa0
