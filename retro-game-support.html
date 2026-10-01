@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retro Game · 技术支持</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #0f0f1a;
+    color: #e8e8f0;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+  .hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-bottom: 3px solid #e94560;
+    padding: 48px 24px 40px;
+    text-align: center;
+  }
+  .hero .badge {
+    display: inline-block;
+    background: #e94560;
+    color: #fff;
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 3px;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    font-family: "Courier New", monospace;
+  }
+  .hero h1 {
+    font-size: 36px;
+    color: #fff;
+    margin-bottom: 8px;
+    font-family: "Courier New", monospace;
+    text-shadow: 3px 3px 0 #e94560;
+  }
+  .hero p { color: #9a9ab0; font-size: 15px; }
+  .container { max-width: 800px; margin: 0 auto; padding: 32px 24px 64px; }
+  .card {
+    background: #1a1a2e;
+    border: 1px solid #2a2a4a;
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+  }
+  .card h2 {
+    font-size: 18px;
+    color: #e94560;
+    margin-bottom: 16px;
+    font-family: "Courier New", monospace;
+    border-left: 4px solid #e94560;
+    padding-left: 10px;
+  }
+  .faq-item { margin-bottom: 18px; }
+  .faq-item:last-child { margin-bottom: 0; }
+  .faq-q {
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 6px;
+    font-size: 15px;
+  }
+  .faq-q::before { content: "▶ "; color: #e94560; font-size: 12px; }
+  .faq-a { color: #b0b0c8; font-size: 14px; padding-left: 16px; }
+  .contact-box {
+    background: linear-gradient(135deg, #e94560 0%, #c73650 100%);
+    border-radius: 8px;
+    padding: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .contact-box h2 { color: #fff; border: none; padding: 0; margin-bottom: 8px; font-size: 20px; }
+  .contact-box p { color: #ffe0e6; font-size: 14px; margin-bottom: 12px; }
+  .contact-box a {
+    display: inline-block;
+    background: #fff;
+    color: #e94560;
+    padding: 10px 28px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: "Courier New", monospace;
+  }
+  .tips { list-style: none; }
+  .tips li {
+    padding: 8px 0;
+    border-bottom: 1px dashed #2a2a4a;
+    color: #b0b0c8;
+    font-size: 14px;
+  }
+  .tips li:last-child { border-bottom: none; }
+  .tips li::before { content: "🕹 "; }
+  footer {
+    text-align: center;
+    padding: 24px;
+    color: #5a5a7a;
+    font-size: 12px;
+    border-top: 1px solid #2a2a4a;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge">INSERT COIN</div>
+  <h1>RETRO GAME</h1>
+  <p>技术支持 · Support</p>
+</div>
+
+<div class="container">
+
+  <div class="contact-box">
+    <h2>需要帮助？</h2>
+    <p>发送邮件给我们，通常在 1-2 个工作日内回复。</p>
+    <a href="mailto:support@aknot.app">support@aknot.app</a>
+  </div>
+
+  <div class="card">
+    <h2>常见问题 FAQ</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">App 打开后闪退 / 进不去游戏？</div>
+      <div class="faq-a">请先尝试：1) 完全关闭 App 后台后重新打开；2) 确认系统版本为 iOS 14 以上；3) 重启手机；4) 删除后重装。如果仍闪退，请邮件告知你的 iPhone 型号和 iOS 版本。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">游戏进度没有保存？</div>
+      <div class="faq-a">游戏进度自动保存在本机。请确保不要在后台上滑强制关闭 App，正常退出即可自动存档。清理手机缓存或重装 App 会丢失本地进度。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">没有声音？</div>
+      <div class="faq-a">检查：1) 手机是否处于静音模式；2) App 内设置中音效开关是否打开；3) 媒体音量是否调大。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">可以离线玩吗？</div>
+      <div class="faq-a">可以。所有经典游戏均支持离线游玩，无需网络连接。仅首次启动和"获取新游戏"时需要联网。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">怎么请求加入新游戏？</div>
+      <div class="faq-a">发邮件到 support@aknot.app，注明你想玩的游戏名称和平台（街机/掌机/家用机）。我们每月根据用户反馈更新游戏库。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">虚拟按键太小 / 按不准？</div>
+      <div class="faq-a">在"设置"中可以调整虚拟按键大小和位置，建议横屏游玩获得更好手感。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>使用小贴士</h2>
+    <ul class="tips">
+      <li>横屏游玩体验最佳，支持蓝牙手柄</li>
+      <li>每局游戏自动存档，随时可继续</li>
+      <li>定期检查更新获取新游戏</li>
+      <li>低电量模式下建议关闭音效以延长续航</li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 aknot · Retro Game Support Page
+</footer>
+
+</body>
+</html>
